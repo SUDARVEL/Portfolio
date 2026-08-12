@@ -1,13 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  /* Temporary tokens — replace when you define the visual system */
-  --background: #0c0d10;
-  --foreground: #f2efe8;
-  --muted: #9a968c;
-  --accent: #e8d5b5;
-  --surface: #15171c;
-  --border: rgba(242, 239, 232, 0.12);
+  --background: #08090b;
+  --foreground: #f3efe6;
+  --muted: #9a9488;
+  --accent: #e2b87a;
+  --accent-soft: rgba(226, 184, 122, 0.16);
+  --surface: #111318;
+  --surface-elevated: #171a21;
+  --border: rgba(243, 239, 230, 0.1);
+  --film-vignette: rgba(0, 0, 0, 0.55);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -17,7 +19,9 @@
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-border: var(--border);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
@@ -37,6 +41,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -45,5 +50,62 @@ a {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 40%, transparent);
+  background: color-mix(in oklab, var(--accent) 42%, transparent);
+}
+
+.film-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.display {
+  font-family: var(--font-display), Georgia, serif;
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1.18);
+  }
+}
+
+@keyframes fadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-video {
+  animation: kenburns 28s ease-out forwards;
+}
+
+.reveal {
+  animation: fadeRise 0.9s ease both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.reveal-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.reveal-delay-3 {
+  animation-delay: 0.36s;
+}
+
+.reveal-delay-4 {
+  animation-delay: 0.48s;
 }

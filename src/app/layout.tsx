@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { siteConfig } from "@/content/site";
 import "./globals.css";
 
 const display = Fraunces({
@@ -15,10 +16,10 @@ const body = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "UX Portfolio",
-    template: "%s · UX Portfolio",
+    default: `${siteConfig.name} · UX Portfolio`,
+    template: `%s · ${siteConfig.name}`,
   },
-  description: "UX design portfolio — case studies, work, resume, and contact.",
+  description: siteConfig.tagline,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
