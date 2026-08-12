@@ -6,6 +6,10 @@ import type { Project } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/**
+ * Sanjay-style impact cards × Sudarvel cinematic theme
+ * Numbered panels, outcome titles, metrics, clear CTA — dark sunset palette
+ */
 export function SelectedWork({ projects }: { projects: Project[] }) {
   return (
     <section id="selected-work" className="border-b border-border px-5 py-24 md:px-8 md:py-32">
@@ -15,52 +19,71 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease }}
+          className="max-w-3xl"
         >
           <p className="text-xs tracking-[0.24em] text-muted uppercase">Selected work</p>
-          <h2 className="display mt-3 max-w-2xl text-3xl md:text-5xl">
-            Stories that prove the work — not just screenshots.
+          <h2 className="display mt-3 text-3xl md:text-5xl">
+            Check out some of my work
           </h2>
+          <p className="mt-4 text-muted md:text-lg">
+            A few products I&apos;ve helped shape — and the thinking behind them.
+          </p>
         </motion.div>
 
-        <ul className="mt-16 space-y-0">
+        <ul className="mt-14 space-y-8 md:mt-16 md:space-y-10">
           {projects.map((project, index) => (
             <motion.li
               key={project.slug}
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.35 }}
-              transition={{ duration: 0.7, delay: index * 0.08, ease }}
-              className="border-t border-border"
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7, delay: index * 0.06, ease }}
             >
               <Link
                 href={`/work/${project.slug}`}
-                className="group grid gap-6 py-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1.4fr)_auto] md:items-end md:gap-10 md:py-12"
+                className="group relative block overflow-hidden border border-border transition-colors duration-300 hover:border-[var(--accent)]"
+                style={{ background: project.coverTone }}
               >
-                <div
-                  className="relative min-h-40 overflow-hidden md:min-h-48"
-                  style={{ background: project.coverTone }}
-                >
-                  <div className="absolute inset-0 opacity-40 transition-opacity duration-500 group-hover:opacity-70">
-                    <div className="film-grain" />
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <p className="text-xs tracking-[0.2em] text-accent uppercase">
-                      {project.year}
+                <div className="film-grain opacity-20" />
+                <div className="relative grid gap-8 p-6 sm:p-8 md:grid-cols-[1.2fr_0.8fr] md:gap-12 md:p-10 lg:p-12">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 text-xs tracking-[0.2em] text-[var(--peach)] uppercase">
+                      <span>{project.index}</span>
+                      <span className="text-muted">·</span>
+                      <span>{project.year}</span>
+                    </div>
+                    <h3 className="display mt-4 max-w-xl text-2xl leading-tight text-[#e9e2d7] transition-colors group-hover:text-[var(--peach)] sm:text-3xl md:text-4xl">
+                      {project.impactTitle}
+                    </h3>
+                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-[#e9e2d7]/75 md:text-base">
+                      {project.tagline}
                     </p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-border px-3 py-1 text-xs tracking-wide text-muted"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="mt-8 inline-flex items-center gap-2 bg-[#e9e2d7] px-5 py-3 text-sm font-medium text-[#060709] transition-transform duration-300 group-hover:translate-x-1">
+                      View case study →
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 self-end sm:gap-5">
+                    {project.metrics.slice(0, 4).map((metric) => (
+                      <div key={metric.label} className="border border-border/80 bg-black/25 p-4 backdrop-blur-sm">
+                        <p className="display text-2xl text-[var(--accent)] md:text-3xl">
+                          {metric.value}
+                        </p>
+                        <p className="mt-2 text-xs leading-snug text-muted">{metric.label}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div>
-                  <h3 className="display text-2xl transition-colors duration-300 group-hover:text-accent md:text-4xl">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 max-w-md text-muted">{project.tagline}</p>
-                  <p className="mt-4 text-sm text-foreground/70">
-                    {project.role} · {project.tags.join(" · ")}
-                  </p>
-                </div>
-                <span className="text-sm tracking-wide text-accent transition-transform duration-300 group-hover:translate-x-1">
-                  Case study →
-                </span>
               </Link>
             </motion.li>
           ))}

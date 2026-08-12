@@ -16,9 +16,9 @@ export function AboutCraft() {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.8, ease }}
         >
-          <p className="text-xs tracking-[0.24em] text-muted uppercase">About / craft</p>
+          <p className="text-xs tracking-[0.24em] text-muted uppercase">About me</p>
           <h2 className="display mt-3 text-3xl md:text-5xl">
-            The view that builds dreams.
+            A little about myself
           </h2>
         </motion.div>
         <motion.div
@@ -29,18 +29,18 @@ export function AboutCraft() {
           className="space-y-6 text-base leading-relaxed text-foreground/80 md:text-lg"
         >
           <p>
-            I&apos;m {siteConfig.name} — a Product Designer focused on B2B SaaS, EdTech, and
-            AI-first platforms. I care about clear workflows, calm interfaces, and systems that
-            scale in Figma and in production.
+            I&apos;m {siteConfig.name} — a Product Designer who turns messy, real-world
+            workflows into products people actually understand.
           </p>
           <p>
-            Recent work includes Digiclass attendance UX, OncoSmart rehab fitness research, and an
-            AI fintech assistant — always pairing research, usability testing, and cross-functional
-            Agile delivery.
+            I work across B2B SaaS, EdTech, AI-first, and health-adjacent products —
+            pairing research, usability testing, and Figma systems with cross-functional
+            Agile delivery. Recent work includes Digiclass attendance UX, OncoSmart rehab
+            fitness, and an AI fintech assistant.
           </p>
           <p className="text-muted">
-            Based in {siteConfig.location}. Currently Associate UI/UX Designer at Digival IT
-            Solutions.
+            Based in {siteConfig.location}. Currently Associate UI/UX Designer at Digival
+            IT Solutions.
           </p>
           <Link
             href="/resume"

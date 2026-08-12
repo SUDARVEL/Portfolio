@@ -64,7 +64,7 @@ export function CinematicHero() {
           transition={{ duration: 0.75, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
           className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-[#e9e2d7]/85 sm:mt-6 sm:max-w-xl sm:text-base md:text-lg"
         >
-          {siteConfig.tagline}
+          {siteConfig.greeting}. {siteConfig.tagline}
         </motion.p>
 
         <motion.div
