@@ -1,61 +1,87 @@
 "use client";
 
-import Link from "next/link";
+import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { siteConfig } from "@/content/site";
 
+/**
+ * Sanjay hero structure × cloudy sunset cinematic theme
+ * Greeting → product / designer → building @ company → location
+ * Full-bleed cloudy city / desk visual (clouds required)
+ */
 export function CinematicHero() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden">
+    <section className="relative min-h-[100svh] overflow-hidden bg-[#060709]">
       <div className="absolute inset-0">
-        <video
-          className="hero-video h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster=""
-          aria-hidden
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/images/hero/desk-clouds.png"
+          alt="Sudarvel at a desk overlooking a cloudy Indian sunset city"
+          fill
+          priority
+          sizes="100vw"
+          className={`object-cover object-[70%_center] md:object-[center_30%] ${
+            reduceMotion ? "" : "hero-media"
+          }`}
+        />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(8,9,11,0.35) 0%, rgba(8,9,11,0.55) 42%, rgba(8,9,11,0.92) 100%), radial-gradient(ellipse at center, transparent 20%, var(--film-vignette) 100%)",
+              "linear-gradient(90deg, rgba(6,7,9,0.88) 0%, rgba(6,7,9,0.55) 42%, rgba(6,7,9,0.25) 70%, rgba(6,7,9,0.45) 100%), linear-gradient(180deg, rgba(6,7,9,0.35) 0%, transparent 35%, rgba(6,7,9,0.75) 100%)",
           }}
         />
-        <div className="film-grain" />
+        <div className="film-grain opacity-20" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:px-8 md:pb-24">
-        <p className="reveal display text-sm tracking-[0.35em] text-accent uppercase md:text-base">
-          {siteConfig.brand}
-        </p>
-        <h1 className="reveal reveal-delay-1 display mt-5 max-w-4xl text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-[-0.02em]">
-          {siteConfig.role}
-        </h1>
-        <p className="reveal reveal-delay-2 mt-6 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
-          {siteConfig.tagline}
-        </p>
-        <div className="reveal reveal-delay-3 mt-10 flex flex-wrap items-center gap-4">
-          <Link
-            href="/work"
-            className="inline-flex items-center bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-transform duration-300 hover:scale-[1.02]"
+      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-end px-5 pb-10 pt-28 sm:px-8 md:justify-center md:pb-16 md:pt-24">
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-sm text-[#e9e2d7]/85 md:text-base"
+        >
+          {siteConfig.greeting}
+        </motion.p>
+
+        <motion.h1
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.06 }}
+          className="mt-3 max-w-3xl"
+        >
+          <span className="block text-[clamp(3rem,12vw,7rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-[#e9e2d7]">
+            product
+          </span>
+          <span
+            className="display mt-1 block text-[clamp(2.6rem,10vw,5.5rem)] leading-[0.95] text-[var(--peach)]"
+            style={{ fontStyle: "italic" }}
           >
-            View work
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center border border-border px-6 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
-          >
-            Contact
-          </Link>
-        </div>
-        <p className="reveal reveal-delay-4 mt-16 text-xs tracking-[0.22em] text-muted uppercase">
-          Scroll to enter the reel
-        </p>
+            designer
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.12 }}
+          className="mt-6 max-w-md text-base text-[#e9e2d7]/85 md:text-lg"
+        >
+          Building B2B SaaS, EdTech & AI-first products @{" "}
+          <span className="inline-flex items-center rounded-full border border-border bg-black/30 px-3 py-1 text-sm text-[var(--peach)] backdrop-blur-sm">
+            Digival
+          </span>
+        </motion.p>
+
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-6 text-xs tracking-[0.18em] text-muted uppercase"
+        >
+          <span>Based in · Chennai, TN</span>
+          <span className="text-[var(--peach)]">Create &gt; Consume</span>
+        </motion.div>
       </div>
     </section>
   );
