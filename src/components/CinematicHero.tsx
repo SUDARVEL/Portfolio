@@ -1,20 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { siteConfig } from "@/content/site";
 
+/**
+ * Hero rules (research + book + design brief):
+ * - One composition, brand-first (SUDARVEL)
+ * - One headline, one supporting line, one CTA group
+ * - Full-bleed cinematic media (edge-to-edge)
+ * - Motion helps presence; never blocks reading
+ * - Responsive: phone → desktop without layout collapse
+ */
 export function CinematicHero() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden">
+    <section
+      aria-label="Introduction"
+      className="relative flex min-h-[100svh] items-end overflow-hidden"
+    >
       <div className="absolute inset-0">
         <video
-          className="hero-video h-full w-full object-cover"
-          autoPlay
+          className={`h-full w-full object-cover object-center ${
+            reduceMotion ? "" : "hero-video"
+          }`}
+          autoPlay={!reduceMotion}
           muted
-          loop
+          loop={!reduceMotion}
           playsInline
           preload="metadata"
-          poster=""
           aria-hidden
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -23,39 +38,68 @@ export function CinematicHero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(8,9,11,0.35) 0%, rgba(8,9,11,0.55) 42%, rgba(8,9,11,0.92) 100%), radial-gradient(ellipse at center, transparent 20%, var(--film-vignette) 100%)",
+              "linear-gradient(180deg, rgba(8,9,11,0.45) 0%, rgba(8,9,11,0.58) 38%, rgba(8,9,11,0.94) 100%), radial-gradient(ellipse at 50% 35%, transparent 10%, var(--film-vignette) 100%)",
           }}
         />
-        <div className="film-grain" />
+        <div className="film-grain opacity-[0.14] sm:opacity-[0.18]" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-32 md:px-8 md:pb-24">
-        <p className="reveal display text-sm tracking-[0.35em] text-accent uppercase md:text-base">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-5 pb-[max(4rem,env(safe-area-inset-bottom))] pt-28 sm:px-6 md:px-8 md:pb-24 md:pt-32">
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="display text-[11px] tracking-[0.32em] text-accent uppercase sm:text-sm sm:tracking-[0.35em] md:text-base"
+        >
           {siteConfig.brand}
-        </p>
-        <h1 className="reveal reveal-delay-1 display mt-5 max-w-4xl text-[clamp(2.75rem,8vw,6.5rem)] leading-[0.95] tracking-[-0.02em]">
+        </motion.p>
+
+        <motion.h1
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+          className="display mt-4 max-w-[11ch] text-[clamp(2.5rem,11vw,6.5rem)] leading-[0.94] tracking-[-0.03em] sm:mt-5 sm:max-w-4xl"
+        >
           {siteConfig.role}
-        </h1>
-        <p className="reveal reveal-delay-2 mt-6 max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
+        </motion.h1>
+
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-foreground/82 sm:mt-6 sm:max-w-xl sm:text-base md:text-lg"
+        >
           {siteConfig.tagline}
-        </p>
-        <div className="reveal reveal-delay-3 mt-10 flex flex-wrap items-center gap-4">
+        </motion.p>
+
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
+        >
           <Link
             href="/work"
-            className="inline-flex items-center bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-transform duration-300 hover:scale-[1.02]"
+            className="inline-flex min-h-12 w-full items-center justify-center bg-accent px-6 py-3 text-sm font-medium tracking-wide text-background transition-transform duration-300 hover:scale-[1.02] sm:w-auto"
           >
             View work
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center border border-border px-6 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:border-accent hover:text-accent"
+            className="inline-flex min-h-12 w-full items-center justify-center border border-border px-6 py-3 text-sm tracking-wide text-foreground transition-colors duration-300 hover:border-accent hover:text-accent sm:w-auto"
           >
             Contact
           </Link>
-        </div>
-        <p className="reveal reveal-delay-4 mt-16 text-xs tracking-[0.22em] text-muted uppercase">
+        </motion.div>
+
+        <motion.p
+          initial={reduceMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-12 hidden text-xs tracking-[0.22em] text-muted uppercase sm:mt-16 sm:block"
+        >
           Scroll to enter the reel
-        </p>
+        </motion.p>
       </div>
     </section>
   );
