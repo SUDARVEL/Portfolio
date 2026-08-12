@@ -6,61 +6,69 @@ import { resume, siteConfig } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
-/** Sanjay-style experience timeline in Sudarvel cinematic theme */
+/** Sanjay experience timeline × cinematic cloudy theme */
 export function ExperienceStrip() {
   return (
-    <section id="experience" className="border-b border-border px-5 py-24 md:px-8 md:py-32">
-      <div className="mx-auto w-full max-w-6xl">
+    <section id="experience" className="scroll-mt-28 px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, ease }}
+          transition={{ duration: 0.7, ease }}
         >
-          <p className="text-xs tracking-[0.24em] text-muted uppercase">Experience</p>
-          <h2 className="display mt-3 max-w-2xl text-3xl md:text-5xl">
+          <p className="section-badge">◆ Experience</p>
+          <h2 className="display mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-[var(--cream)] sm:text-5xl">
             From intern to shipping EdTech & AI products
           </h2>
-          <p className="mt-4 max-w-2xl text-muted">
-            {resume.summary}
-          </p>
+          <p className="mt-4 max-w-2xl text-[var(--muted)]">{resume.summary}</p>
         </motion.div>
 
-        <ol className="mt-14 space-y-0 border-l border-border md:mt-16">
+        <ol className="mt-12 space-y-5 sm:mt-14">
           {resume.experience.map((job, index) => (
             <motion.li
               key={`${job.org}-${job.period}`}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.65, delay: index * 0.08, ease }}
-              className="relative pl-8 pb-12 last:pb-0 md:pl-12"
+              transition={{ duration: 0.55, delay: index * 0.06, ease }}
+              className="rounded-[24px] border border-[var(--line)] bg-[var(--panel)] p-6 sm:p-8"
             >
-              <span className="absolute top-1.5 -left-[5px] h-2.5 w-2.5 rounded-full bg-accent" />
-              <p className="text-xs tracking-[0.18em] text-[var(--peach)] uppercase">
-                {job.period}
-                {job.location ? ` · ${job.location}` : ""}
-              </p>
-              <h3 className="display mt-2 text-2xl md:text-3xl">
+              <div className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">
+                <span className="rounded-full border border-[var(--line)] px-2.5 py-1 text-[var(--peach)]">
+                  {job.period}
+                </span>
+                {job.location ? (
+                  <span className="rounded-full border border-[var(--line)] px-2.5 py-1">
+                    {job.location}
+                  </span>
+                ) : null}
+              </div>
+              <h3 className="display mt-4 text-2xl text-[var(--cream)] sm:text-3xl">
                 {job.role}
               </h3>
-              <p className="mt-1 text-muted">{job.org}</p>
-              <ul className="mt-4 max-w-2xl space-y-2 text-sm text-foreground/80 md:text-base">
+              <p className="mt-1 text-[var(--coral)]">{job.org}</p>
+              <ul className="mt-5 max-w-3xl space-y-2 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
                 {job.points.map((point) => (
-                  <li key={point}>{point}</li>
+                  <li key={point} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                    <span>{point}</span>
+                  </li>
                 ))}
               </ul>
             </motion.li>
           ))}
         </ol>
 
-        <Link
-          href="/resume"
-          className="mt-10 inline-flex border-b border-accent pb-1 text-sm tracking-wide text-accent"
-        >
-          Full resume →
-        </Link>
-        <p className="mt-6 text-sm text-muted">{siteConfig.proofLine}</p>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <Link
+            href="/resume"
+            className="inline-flex items-center gap-2 text-sm text-[var(--cream)] transition hover:text-[var(--peach)]"
+          >
+            Full resume →
+          </Link>
+          <p className="text-sm text-[var(--muted)]">{siteConfig.proofLine}</p>
+        </div>
       </div>
     </section>
   );

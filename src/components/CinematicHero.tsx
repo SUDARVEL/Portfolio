@@ -1,30 +1,27 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { siteConfig } from "@/content/site";
 
 /**
- * Storytelling hero — “The view that builds dreams”
- * Shot 09 still (storyboard). Replace with Higgsfield MP4 at /videos/hero.mp4 later.
+ * Sanjay hero structure × cloudy sunset cinematic theme
+ * Greeting → product / designer → building @ company → location
+ * Full-bleed cloudy city / desk visual (clouds required)
  */
 export function CinematicHero() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section
-      aria-label="Introduction"
-      className="relative flex min-h-[100svh] items-end overflow-hidden bg-[#060709]"
-    >
+    <section className="relative min-h-[100svh] overflow-hidden bg-[#060709]">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero/end-frame.png"
-          alt="Sudarvel at a high-rise desk overlooking an Indian city at sunset — cinematic anime hero frame"
+          src="/images/hero/desk-clouds.png"
+          alt="Sudarvel at a desk overlooking a cloudy Indian sunset city"
           fill
           priority
           sizes="100vw"
-          className={`object-cover object-[center_28%] ${
+          className={`object-cover object-[70%_center] md:object-[center_30%] ${
             reduceMotion ? "" : "hero-media"
           }`}
         />
@@ -32,69 +29,59 @@ export function CinematicHero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(6,7,9,0.25) 0%, rgba(6,7,9,0.42) 38%, rgba(6,7,9,0.93) 100%), radial-gradient(ellipse at 58% 28%, transparent 12%, rgba(6,7,9,0.5) 100%)",
+              "linear-gradient(90deg, rgba(6,7,9,0.88) 0%, rgba(6,7,9,0.55) 42%, rgba(6,7,9,0.25) 70%, rgba(6,7,9,0.45) 100%), linear-gradient(180deg, rgba(6,7,9,0.35) 0%, transparent 35%, rgba(6,7,9,0.75) 100%)",
           }}
         />
-        <div className="film-grain" />
+        <div className="film-grain opacity-20" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col px-5 pb-[max(4rem,env(safe-area-inset-bottom))] pt-28 sm:px-6 md:px-8 md:pb-24 md:pt-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-6xl flex-col justify-end px-5 pb-10 pt-28 sm:px-8 md:justify-center md:pb-16 md:pt-24">
         <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="display text-[11px] tracking-[0.34em] uppercase sm:text-sm"
-          style={{ color: "var(--peach)" }}
+          className="text-sm text-[#e9e2d7]/85 md:text-base"
         >
-          {siteConfig.brand}
+          {siteConfig.greeting}
         </motion.p>
 
         <motion.h1
           initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.06, ease: [0.22, 1, 0.36, 1] }}
-          className="display mt-4 max-w-[12ch] text-[clamp(2.6rem,11vw,6.4rem)] leading-[0.94] tracking-[-0.03em] text-[#e9e2d7] sm:mt-5 sm:max-w-4xl"
+          transition={{ delay: 0.06 }}
+          className="mt-3 max-w-3xl"
         >
-          {siteConfig.role}
+          <span className="block text-[clamp(3rem,12vw,7rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-[#e9e2d7]">
+            product
+          </span>
+          <span
+            className="display mt-1 block text-[clamp(2.6rem,10vw,5.5rem)] leading-[0.95] text-[var(--peach)]"
+            style={{ fontStyle: "italic" }}
+          >
+            designer
+          </span>
         </motion.h1>
 
         <motion.p
-          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-5 max-w-md text-[0.95rem] leading-relaxed text-[#e9e2d7]/85 sm:mt-6 sm:max-w-xl sm:text-base md:text-lg"
+          transition={{ delay: 0.12 }}
+          className="mt-6 max-w-md text-base text-[#e9e2d7]/85 md:text-lg"
         >
-          {siteConfig.greeting}. {siteConfig.tagline}
+          Building B2B SaaS, EdTech & AI-first products @{" "}
+          <span className="inline-flex items-center rounded-full border border-border bg-black/30 px-3 py-1 text-sm text-[var(--peach)] backdrop-blur-sm">
+            Digival
+          </span>
         </motion.p>
 
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-          className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
-        >
-          <Link
-            href="/work"
-            className="inline-flex min-h-12 w-full items-center justify-center bg-accent px-6 py-3 text-sm font-medium tracking-wide text-[#060709] transition-transform duration-300 hover:scale-[1.02] sm:w-auto"
-          >
-            View work
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex min-h-12 w-full items-center justify-center border border-border px-6 py-3 text-sm tracking-wide text-[#e9e2d7] transition-colors duration-300 hover:border-[var(--peach)] hover:text-[var(--peach)] sm:w-auto"
-          >
-            Contact
-          </Link>
-        </motion.div>
-
-        <motion.p
           initial={reduceMotion ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.36 }}
-          className="mt-12 hidden text-xs tracking-[0.22em] text-muted uppercase sm:mt-16 sm:block"
+          transition={{ delay: 0.2 }}
+          className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-6 text-xs tracking-[0.18em] text-muted uppercase"
         >
-          Scroll into the work
-        </motion.p>
+          <span>Based in · Chennai, TN</span>
+          <span className="text-[var(--peach)]">Create &gt; Consume</span>
+        </motion.div>
       </div>
     </section>
   );

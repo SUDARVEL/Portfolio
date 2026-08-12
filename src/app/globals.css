@@ -10,6 +10,11 @@
   --accent-deep: #c36f61;
   --amber: #f5a34d;
   --peach: #f9c18f;
+  --coral: #c36f61;
+  --cream: #e9e2d7;
+  --ink: #060709;
+  --panel: #20191e;
+  --line: rgba(233, 226, 215, 0.12);
   --mauve: #392b33;
   --dusty: #6d5260;
   --surface: #20191e;
@@ -75,6 +80,14 @@ a {
 
 .display {
   font-family: var(--font-display), Georgia, serif;
+}
+
+.section-badge {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peach);
 }
 
 @keyframes kenburns {
