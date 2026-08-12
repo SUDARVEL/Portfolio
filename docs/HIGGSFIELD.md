@@ -1,18 +1,36 @@
-# Higgsfield status
+# Connect Higgsfield (Sudarvel)
 
-## Current status
-**Higgsfield MCP is installed but NOT authenticated** (`serverStatus: needsAuth`).
+Config is saved at `.cursor/mcp.json`:
 
-Until you connect it, this agent cannot generate Higgsfield hero videos/images.
+```json
+{
+  "mcpServers": {
+    "higgsfield": {
+      "url": "https://mcp.higgsfield.ai/mcp"
+    }
+  }
+}
+```
 
-## How to connect (one time)
-1. Open **Cursor Desktop** (Settings → MCP / Integrations)
-2. Find **Higgsfield**
-3. Click **Connect / Authenticate** and finish login
-4. Come back to this chat and say: **“Higgsfield connected — generate hero”**
+## Important
+The JSON only **points** Cursor to Higgsfield.  
+You still must **log in once** (OAuth). No API key.
 
-## What we use Higgsfield for
-Custom cinematic hero media that matches Sudarvel’s brand (dark, warm accent, product-design mood) — then we drop it into `public/videos/hero.mp4` (or image fallback).
+## Do this in Cursor Desktop
+1. Save/pull so `.cursor/mcp.json` is present (already in this branch)
+2. **Reload Cursor**: `Cmd/Ctrl+Shift+P` → **Developer: Reload Window**
+3. Open **Settings → Tools & MCP** (or MCP Servers)
+4. Find **higgsfield** — click **Connect / Authenticate**
+5. Browser opens → sign in at higgsfield.ai → Allow
+6. Dot should turn **green**
+7. Come back to chat and say: **“Higgsfield connected — generate hero”**
 
-## Meanwhile
-Hero + mobile nav are already being built with research rules (brand-first, one CTA group, full-bleed, responsive).
+### Or install from Marketplace
+In chat type: `/add-plugin` → search **Higgsfield** → Install  
+Then authenticate the same way.
+
+## Note for Cloud Agents
+This cloud chat may not see Higgsfield until your Desktop MCP is authenticated / the server is enabled for the cloud environment. If it still says not connected after login, open a **new Desktop Agent** chat on the Portfolio repo and continue hero generation there.
+
+## Needs
+An active Higgsfield account (paid plan may be required per their docs).
