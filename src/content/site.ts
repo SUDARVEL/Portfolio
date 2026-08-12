@@ -7,7 +7,7 @@ export const siteConfig = {
   brand: "SUDARVEL",
   role: "Product Designer",
   tagline:
-    "I design clear B2B SaaS, EdTech, and AI-first product experiences — from research to scalable Figma systems.",
+    "The view that builds dreams — clear product stories for B2B SaaS, EdTech, and AI-first platforms.",
   email: "velsudar76@gmail.com",
   phone: "7338965096",
   location: "Chennai, Tamil Nadu, India",

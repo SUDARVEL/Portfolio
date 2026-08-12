@@ -17,7 +17,9 @@ export function AboutCraft() {
           transition={{ duration: 0.8, ease }}
         >
           <p className="text-xs tracking-[0.24em] text-muted uppercase">About / craft</p>
-          <h2 className="display mt-3 text-3xl md:text-5xl">Designed like a reel, shipped like a product.</h2>
+          <h2 className="display mt-3 text-3xl md:text-5xl">
+            The view that builds dreams.
+          </h2>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 24 }}

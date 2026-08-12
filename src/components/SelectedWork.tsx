@@ -18,7 +18,7 @@ export function SelectedWork({ projects }: { projects: Project[] }) {
         >
           <p className="text-xs tracking-[0.24em] text-muted uppercase">Selected work</p>
           <h2 className="display mt-3 max-w-2xl text-3xl md:text-5xl">
-            A tiny fraction of the stories I shape.
+            Stories that prove the work — not just screenshots.
           </h2>
         </motion.div>
 

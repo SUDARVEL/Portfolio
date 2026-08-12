@@ -29,8 +29,8 @@ export function ClosingCta() {
           Have a product that needs a clearer story?
         </h2>
         <p className="mt-6 max-w-xl text-muted">
-          Tell me about the problem, the audience, and the deadline. I&apos;ll reply with a
-          thoughtful next step.
+          I help teams turn complex B2B, EdTech, and AI workflows into calm,
+          hire-ready product narratives — from research to shipped UI.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
