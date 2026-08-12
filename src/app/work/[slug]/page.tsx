@@ -39,6 +39,32 @@ export default async function CaseStudyPage({ params }: Props) {
           <p className="mt-5 max-w-2xl text-lg text-foreground/80">{project.tagline}</p>
           <p className="mt-6 max-w-2xl text-muted">{project.summary}</p>
           <p className="mt-6 text-sm text-foreground/70">{project.tags.join(" · ")}</p>
+          <dl className="mt-8 grid gap-4 text-sm text-foreground/75 sm:grid-cols-2">
+            {project.meta.client ? (
+              <div>
+                <dt className="text-xs tracking-[0.18em] text-muted uppercase">Client</dt>
+                <dd className="mt-1">{project.meta.client}</dd>
+              </div>
+            ) : null}
+            {project.meta.team ? (
+              <div>
+                <dt className="text-xs tracking-[0.18em] text-muted uppercase">Team</dt>
+                <dd className="mt-1">{project.meta.team}</dd>
+              </div>
+            ) : null}
+            {project.meta.platforms ? (
+              <div>
+                <dt className="text-xs tracking-[0.18em] text-muted uppercase">Platforms</dt>
+                <dd className="mt-1">{project.meta.platforms}</dd>
+              </div>
+            ) : null}
+            {project.meta.duration ? (
+              <div>
+                <dt className="text-xs tracking-[0.18em] text-muted uppercase">Timeline</dt>
+                <dd className="mt-1">{project.meta.duration}</dd>
+              </div>
+            ) : null}
+          </dl>
         </div>
       </header>
 

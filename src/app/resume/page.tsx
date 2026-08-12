@@ -42,6 +42,14 @@ export default function ResumePage() {
               </ul>
             </div>
             <div>
+              <h2 className="text-xs tracking-[0.22em] text-muted uppercase">Tools</h2>
+              <ul className="mt-5 space-y-2 text-foreground/80">
+                {resume.tools.map((tool) => (
+                  <li key={tool}>{tool}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
               <h2 className="text-xs tracking-[0.22em] text-muted uppercase">Education</h2>
               <ul className="mt-5 space-y-4">
                 {resume.education.map((item) => (
@@ -52,6 +60,11 @@ export default function ResumePage() {
                 ))}
               </ul>
             </div>
+            <p className="text-sm text-muted">
+              {siteConfig.email}
+              <br />
+              {siteConfig.location}
+            </p>
             <Link
               href="/contact"
               className="inline-flex bg-accent px-5 py-3 text-sm font-medium text-background"

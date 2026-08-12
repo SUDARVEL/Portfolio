@@ -27,17 +27,18 @@ export function AboutCraft() {
           className="space-y-6 text-base leading-relaxed text-foreground/80 md:text-lg"
         >
           <p>
-            I&apos;m {siteConfig.name} — a UX & product designer who treats the first viewport as a
-            single composition. Brand first, one message, one dominant visual, then the work.
+            I&apos;m {siteConfig.name} — a Product Designer focused on B2B SaaS, EdTech, and
+            AI-first platforms. I care about clear workflows, calm interfaces, and systems that
+            scale in Figma and in production.
           </p>
           <p>
-            My craft sits between editorial storytelling and product pragmatism: interaction that
-            earns attention, motion that clarifies hierarchy, and case studies hiring teams can
-            skim without getting lost.
+            Recent work includes Digiclass attendance UX, OncoSmart rehab fitness research, and an
+            AI fintech assistant — always pairing research, usability testing, and cross-functional
+            Agile delivery.
           </p>
           <p className="text-muted">
-            Based in {siteConfig.location}. Currently shaping recovery fitness experiences at
-            Oncosmart.
+            Based in {siteConfig.location}. Currently Associate UI/UX Designer at Digival IT
+            Solutions.
           </p>
           <Link
             href="/resume"
