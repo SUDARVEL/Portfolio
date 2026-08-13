@@ -69,4 +69,7 @@ Then we implement that section only in `/portfolio`.
 
 ## Decision still waiting on you
 
+Fill the storytelling worksheet: [`STORYTELLING_STRUCTURE.md`](./STORYTELLING_STRUCTURE.md)  
+Quick start: [`HOW_TO_FILL.md`](./HOW_TO_FILL.md)
+
 **Hero definition** — paste preferred vibe (1–2 links from above) + your name, headline, CTAs, and whether you want light motion, scroll 3D, or both.

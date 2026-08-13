@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: #08090b;
-  --foreground: #f3efe6;
-  --muted: #9a9488;
-  --accent: #e2b87a;
-  --accent-soft: rgba(226, 184, 122, 0.16);
-  --surface: #111318;
-  --surface-elevated: #171a21;
-  --border: rgba(243, 239, 230, 0.1);
-  --film-vignette: rgba(0, 0, 0, 0.55);
+  /* Storyboard palette — The view that builds dreams */
+  --background: #060709;
+  --foreground: #e9e2d7;
+  --muted: #9b8f8a;
+  --accent: #f08f68;
+  --accent-soft: rgba(240, 143, 104, 0.16);
+  --accent-deep: #c36f61;
+  --amber: #f5a34d;
+  --peach: #f9c18f;
+  --coral: #c36f61;
+  --cream: #e9e2d7;
+  --ink: #060709;
+  --panel: #20191e;
+  --line: rgba(233, 226, 215, 0.12);
+  --mauve: #392b33;
+  --dusty: #6d5260;
+  --surface: #20191e;
+  --surface-elevated: #2a2228;
+  --border: rgba(233, 226, 215, 0.12);
+  --film-vignette: rgba(6, 7, 9, 0.62);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -20,6 +31,11 @@
   --color-muted: var(--muted);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
+  --color-amber: var(--amber);
+  --color-peach: var(--peach);
+  --color-mauve: var(--mauve);
+  --color-dusty: var(--dusty);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
   --color-border: var(--border);
@@ -57,7 +73,7 @@ a {
   pointer-events: none;
   position: absolute;
   inset: 0;
-  opacity: 0.18;
+  opacity: 0.16;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -66,12 +82,20 @@ a {
   font-family: var(--font-display), Georgia, serif;
 }
 
+.section-badge {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--peach);
+}
+
 @keyframes kenburns {
   from {
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
   to {
-    transform: scale(1.18);
+    transform: scale(1.14);
   }
 }
 
@@ -86,26 +110,28 @@ a {
   }
 }
 
-.hero-video {
-  animation: kenburns 28s ease-out forwards;
+.hero-media {
+  animation: kenburns 32s ease-out forwards;
 }
 
-.reveal {
-  animation: fadeRise 0.9s ease both;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-media {
+    animation: none !important;
+  }
 }
 
-.reveal-delay-1 {
-  animation-delay: 0.12s;
-}
-
-.reveal-delay-2 {
-  animation-delay: 0.24s;
-}
-
-.reveal-delay-3 {
-  animation-delay: 0.36s;
-}
-
-.reveal-delay-4 {
-  animation-delay: 0.48s;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

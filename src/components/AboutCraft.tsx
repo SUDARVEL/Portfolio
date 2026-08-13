@@ -1,51 +1,76 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/content/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/** Sanjay about block × cloudy sunset theme */
 export function AboutCraft() {
   return (
-    <section id="about" className="border-b border-border px-5 py-24 md:px-8 md:py-32">
-      <div className="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-[0.9fr_1.1fr] md:gap-20">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, ease }}
-        >
-          <p className="text-xs tracking-[0.24em] text-muted uppercase">About / craft</p>
-          <h2 className="display mt-3 text-3xl md:text-5xl">Designed like a reel, shipped like a product.</h2>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.8, delay: 0.1, ease }}
-          className="space-y-6 text-base leading-relaxed text-foreground/80 md:text-lg"
-        >
-          <p>
-            I&apos;m {siteConfig.name} — a UX & product designer who treats the first viewport as a
-            single composition. Brand first, one message, one dominant visual, then the work.
-          </p>
-          <p>
-            My craft sits between editorial storytelling and product pragmatism: interaction that
-            earns attention, motion that clarifies hierarchy, and case studies hiring teams can
-            skim without getting lost.
-          </p>
-          <p className="text-muted">
-            Based in {siteConfig.location}. Currently shaping recovery fitness experiences at
-            Oncosmart.
-          </p>
-          <Link
-            href="/resume"
-            className="inline-flex border-b border-accent pb-1 text-sm tracking-wide text-accent"
+    <section id="about" className="scroll-mt-28 px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-6xl">
+        <p className="section-badge">◆ About</p>
+        <div className="mt-8 grid gap-10 overflow-hidden rounded-[28px] border border-[var(--line)] bg-[var(--panel)] lg:grid-cols-[0.95fr_1.05fr]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.7, ease }}
+            className="relative min-h-[320px] overflow-hidden lg:min-h-full"
           >
-            Read the resume
-          </Link>
-        </motion.div>
+            <Image
+              src="/images/hero/profile-clouds.png"
+              alt={`${siteConfig.name} looking out over a cloudy sunset city`}
+              fill
+              className="object-cover object-[center_20%]"
+              sizes="(max-width: 1024px) 100vw, 45vw"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(180deg, transparent 40%, rgba(6,7,9,0.75) 100%)",
+              }}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.35 }}
+            transition={{ duration: 0.7, delay: 0.08, ease }}
+            className="flex flex-col justify-center p-7 sm:p-10"
+          >
+            <h2 className="display text-3xl font-semibold tracking-tight text-[var(--cream)] sm:text-5xl">
+              A little about myself
+            </h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+              <p>
+                I&apos;m {siteConfig.name} — a Product Designer who turns messy,
+                real-world workflows into products people actually understand.
+              </p>
+              <p>
+                I work across B2B SaaS, EdTech, AI-first, and health-adjacent
+                products — pairing research, usability testing, and Figma systems
+                with cross-functional Agile delivery.
+              </p>
+              <p>
+                Based in {siteConfig.location}. Currently Associate UI/UX Designer
+                at Digival IT Solutions.
+              </p>
+            </div>
+            <Link
+              href="/resume"
+              className="mt-8 inline-flex w-fit items-center gap-2 rounded-full border border-[var(--line)] bg-[var(--ink)]/40 px-5 py-2.5 text-sm text-[var(--cream)] transition hover:border-[var(--coral)]/50 hover:text-[var(--peach)]"
+            >
+              Read the resume →
+            </Link>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
