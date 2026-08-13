@@ -36,12 +36,12 @@ export function SiteHeader() {
       <div
         className={`mx-auto flex max-w-5xl items-center justify-between rounded-full border px-4 py-2.5 transition-all duration-300 md:px-5 ${
           scrolled || open
-            ? "border-border bg-[#20191e]/90 shadow-lg backdrop-blur-md"
-            : "border-border/60 bg-[#20191e]/55 backdrop-blur-sm"
+            ? "border-[rgba(32,191,234,0.22)] bg-[#071522]/88 shadow-lg backdrop-blur-md"
+            : "border-[rgba(32,191,234,0.14)] bg-[#071522]/45 backdrop-blur-sm"
         }`}
       >
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-semibold text-[#060709]">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#20BFEA] text-xs font-semibold text-[#041018]">
             KS
           </span>
           <span className="text-sm font-semibold tracking-wide text-[#e9e2d7]">
